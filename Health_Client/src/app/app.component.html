@@ -1,0 +1,83 @@
+<!-- <h2>Hospital Management - Patient Section</h2> -->
+
+
+<!-- Header Bar -->
+
+
+
+
+
+<!-- etc... -->
+
+<div class="header-bar">
+  <h1>🏥 Sunshine Hospital Management System</h1>
+</div>
+
+
+<div class="container">
+  <!-- Left: Form Section -->
+  <div class="form-section">
+    <div class="form-wrapper">
+      <h3><span class="icon"></span> Register New Patient</h3>
+      <form (ngSubmit)="onSubmit()" #f="ngForm">
+        <input type="text" name="name" [(ngModel)]="patient.name" placeholder="Name" required>
+        <input type="number" name="age" [(ngModel)]="patient.age" placeholder="Age">
+        <input type="text" name="gender" [(ngModel)]="patient.gender" placeholder="Gender">
+        <input type="text" name="contact" [(ngModel)]="patient.contact" placeholder="Contact">
+        <textarea name="symptoms" [(ngModel)]="patient.symptoms" placeholder="Symptoms"></textarea>
+        <button type="submit">Register</button>
+      </form>
+      <p *ngIf="message">{{ message }}</p>
+    </div>
+  </div>
+
+  <!-- Right: Patients List -->
+  <div class="table-section">
+    <h3>📋 Registered Patients</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Age</th>
+          <th>Gender</th>
+          <th>Contact</th>
+          <th>Symptoms</th>
+          <th>Registered At</th>
+        </tr>
+      </thead>
+      <!-- <tbody>
+        <tr *ngFor="let p of patients">
+          <td>{{ p.name }}</td>
+          <td>{{ p.age }}</td>
+          <td>{{ p.gender }}</td>
+          <td>{{ p.contact }}</td>
+          <td>{{ p.symptoms }}</td>
+          <td>{{ p.createdAt | date:'short' }}</td>
+        </tr>
+      </tbody> -->
+
+      <tbody>
+  <tr *ngFor="let p of getPaginatedPatients()">
+    <td>{{ p.name }}</td>
+    <td>{{ p.age }}</td>
+    <td>{{ p.gender }}</td>
+    <td>{{ p.contact }}</td>
+    <td>{{ p.symptoms }}</td>
+    <td>{{ p.createdAt | date:'short' }}</td>
+  </tr>
+</tbody>
+    </table>
+
+    <div class="pagination">
+  <button class="pgn" (click)="prevPage()" [disabled]="currentPage === 1">Prev</button>
+  <span>Page {{ currentPage }} of {{ totalPages }}</span>
+  <button  class="pgn"(click)="nextPage()" [disabled]="currentPage === totalPages">Next</button>
+  </div>
+
+  
+
+  
+</div>
+</div>
+<!-- app.component.html -->
+

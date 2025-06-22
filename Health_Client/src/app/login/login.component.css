@@ -1,0 +1,78 @@
+/* login.component.css */
+
+.login-container {
+  max-width: 400px;
+  margin: 60px auto;
+  padding: 30px 25px;
+  border-radius: 12px;
+  background-color: #ffffff;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+h2 {
+  text-align: center;
+  color: #333;
+  margin-bottom: 24px;
+}
+
+form div {
+  margin-bottom: 16px;
+}
+
+label {
+  display: block;
+  margin-bottom: 6px;
+  font-weight: 500;
+  color: #444;
+}
+
+input {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 15px;
+  box-sizing: border-box;
+  transition: border 0.2s ease-in-out;
+}
+
+input:focus {
+  border-color: #4CAF50;
+  outline: none;
+}
+
+button[type="submit"] {
+  width: 100%;
+  padding: 12px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.25s ease;
+}
+
+button[type="submit"]:hover {
+  background-color: #45a049;
+}
+
+p {
+  text-align: center;
+  margin-top: 10px;
+  font-weight: 500;
+}
+
+a {
+  display: block;
+  text-align: center;
+  margin-top: 16px;
+  text-decoration: none;
+  color: #007bff;
+  font-weight: 500;
+}
+
+a:hover {
+  text-decoration: underline;
+}

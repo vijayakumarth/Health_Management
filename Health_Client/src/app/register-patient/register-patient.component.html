@@ -1,0 +1,104 @@
+
+<!-- <h2>Hospital Management - Patient Section</h2> -->
+
+
+<!-- Header Bar -->
+
+
+
+
+
+<!-- etc... -->
+
+<div class="header-bar">
+  <div class="title">🏥 Sunshine Hospital Management System</div>
+  <button class="logout-btn" (click)="logout()">Logout</button>
+</div>
+
+
+
+
+<div class="container">
+  <!-- Left: Form Section -->
+  <div class="form-section">
+    <div class="form-wrapper">
+      <h3><span class="icon"></span> Register New Patient</h3>
+      <form (ngSubmit)="onSubmit()" #f="ngForm">
+        <input type="text" name="name" [(ngModel)]="patient.name" placeholder="Name" required>
+        <input type="number" name="age" [(ngModel)]="patient.age" placeholder="Age">
+        <input type="text" name="gender" [(ngModel)]="patient.gender" placeholder="Gender">
+        <input type="text" name="contact" [(ngModel)]="patient.contact" placeholder="Contact">
+        <textarea name="symptoms" [(ngModel)]="patient.symptoms" placeholder="Symptoms"></textarea>
+        
+
+
+
+      <div class="form-buttons">
+          <button type="submit" class="btn small">{{ isEditMode ? 'Update' : 'Register' }}</button>
+           <button type="button" class="btn small cancel-btn" *ngIf="isEditMode" (click)="resetForm()">Cancel</button>
+      </div>
+
+
+      </form>
+      <p *ngIf="message">{{ message }}</p>
+    </div>
+  </div>
+
+  <!-- Right: Patients List -->
+  <div class="table-section">
+    <h3>📋 Registered Patients</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Age</th>
+          <th>Gender</th>
+          <th>Contact</th>
+          <th>Symptoms</th>
+          <th>Registered At</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <!-- <tbody>
+        <tr *ngFor="let p of patients">
+          <td>{{ p.name }}</td>
+          <td>{{ p.age }}</td>
+          <td>{{ p.gender }}</td>
+          <td>{{ p.contact }}</td>
+          <td>{{ p.symptoms }}</td>
+          <td>{{ p.createdAt | date:'short' }}</td>
+        </tr>
+      </tbody> -->
+
+      <tbody>
+  <tr *ngFor="let p of getPaginatedPatients()">
+    <td>{{ p.name }}</td>
+    <td>{{ p.age }}</td>
+    <td>{{ p.gender }}</td>
+    <td>{{ p.contact }}</td>
+    <td>{{ p.symptoms }}</td>
+    <td>{{ p.createdAt | date:'short' }}</td>
+    <td>
+  <div class="action-buttons">
+    <button class="btn edit-btn" (click)="editPatient(p)">Edit</button>
+    <button class="btn delete-btn" (click)="deletePatient(p._id)">Delete</button>
+  </div>
+</td>
+
+  </tr>
+</tbody>
+    </table>
+
+    <div class="pagination">
+  <button class="pgn" (click)="prevPage()" [disabled]="currentPage === 1">Prev</button>
+  <span>Page {{ currentPage }} of {{ totalPages }}</span>
+  <button  class="pgn"(click)="nextPage()" [disabled]="currentPage === totalPages">Next</button>
+  </div>
+
+  
+
+  
+</div>
+</div>
+<!-- app.component.html -->
+

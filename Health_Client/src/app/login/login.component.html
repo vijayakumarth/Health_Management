@@ -1,0 +1,32 @@
+<div class="login-container">
+  <h2>Login</h2>
+  <form (ngSubmit)="login()">
+    <div>
+      <label for="username">Username</label>
+      <input
+        type="text"
+        [(ngModel)]="loginData.username"
+        name="username"
+        id="username"
+        required
+      />
+    </div>
+
+    <div>
+      <label for="password">Password</label>
+      <input
+        type="password"
+        [(ngModel)]="loginData.password"
+        name="password"
+        id="password"
+        required
+      />
+    </div>
+
+    <button type="submit">Login</button>
+
+    <p *ngIf="message" style="color: red;">{{ message }}</p>
+  </form>
+
+  <a routerLink="/signup">Don't have an account? Sign Up</a>
+</div>
